@@ -1,0 +1,17 @@
+version: '3.7'
+services:
+  db:
+    image: postgres:10.13-alpine
+    environment:
+      POSTGRES_HOST_AUTH_METHOD: 'trust'
+      POSTGRES_PASSWORD: 'password'
+    volumes:
+      - ./tmp/db:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
+  redis:
+    image: redis:6.0.2-alpine
+    ports:
+      - "7002:6379"
+volumes:
+  data:
