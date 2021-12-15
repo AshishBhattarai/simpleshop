@@ -13,11 +13,17 @@
 # it.
 #
 # See http://rubydoc.info/gems/rspec-core/RSpec/Core/Configuration
+require 'support/request_helpers'
+
 RSpec.configure do |config|
   # Run seeds
 
   config.before(:suite) do
     Rails.application.load_seed
+  end
+
+  config.before(:all, type: :request) do
+    config.include RequestHelpers
   end
 
   # rspec-expectations config goes here. You can use an alternate

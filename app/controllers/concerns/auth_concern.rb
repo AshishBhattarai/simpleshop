@@ -23,7 +23,7 @@ module AuthConcern
 	end
 
 	def check_user_status(with_admin, with_customer)
-		if @user.user_type.is_admin?
+		if @user.is_admin?
 			with_admin.()
 		else
 			with_customer.()
@@ -31,7 +31,7 @@ module AuthConcern
 	end
 
 	def raise_exception_if_not_customer(msg = "Only customers are allowed to access this resource.")
-		if !@user.user_type.is_customer?
+		if !@user.is_customer?
 			raise ApiException.new(msg, 403)
 		end
 	end
