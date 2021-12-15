@@ -9,6 +9,7 @@ module RequestHelpers
 		token
 	end
 
+# password from db/seeds.rb, db/seeds.rb is ran before tests
 	def login_admin
 		login("test1", "pass_test1")
 	end
